@@ -1,4 +1,124 @@
 ### **New Interaction**
+- **Date**: 03-12-2026 14:38
+- **User**: cindy.gangne-fotsing@epita.fr
+- **Prompt**: Update the journal with the latest testing interactions
+- **CoPilot Mode**: Edit
+- **CoPilot Model**: Claude Sonnet 4.6
+- **Changes Made**: Reconciled recent conversation turns against `JOURNAL.md`; backfilled the missing README interaction and prepended this current journal-update entry.
+- **Context and Reasons for Changes**: User requested journal update. Two missing entries identified: README authoring and this current prompt.
+- **My Observations**:
+
+### **New Interaction**
+- **Date**: 03-12-2026 14:38
+- **User**: cindy.gangne-fotsing@epita.fr
+- **Prompt**: The file should explain how to run the game and the tests.
+- **CoPilot Mode**: Edit
+- **CoPilot Model**: Claude Sonnet 4.6
+- **Changes Made**: Populated the empty `README.md` with setup instructions (virtual environment + pytest install including execution-policy fix), commands to run the game and the tests (verbose and quiet modes), and a project structure overview.
+- **Context and Reasons for Changes**: User wanted `README.md` to document how to run the game and the test suite. No prior content existed in the file. Entry backfilled during reconciliation.
+- **My Observations**:
+
+### **New Interaction**
+- **Date**: 03-12-2026 14:08
+- **User**: cindy.gangne-fotsing@epita.fr
+- **Prompt**: using powershell, help me to install the pytest. step by step
+- **CoPilot Mode**: Ask
+- **CoPilot Model**: GPT-5.3-Codex
+- **Changes Made**: Provided step-by-step PowerShell commands to install `pytest` in a virtual environment, including activation and verification commands with a common execution-policy fallback.
+- **Context and Reasons for Changes**: User asked for guided installation using PowerShell. Reconciliation was performed against the top section of `JOURNAL.md`; no additional in-scope missing prompts were detected before prepending this entry.
+- **My Observations**:
+
+### **New Interaction**
+- **Date**: 03-12-2026 14:00
+- **User**: cindy.gangne-fotsing@epita.fr
+- **Prompt**: yes sure
+- **CoPilot Mode**: Edit
+- **CoPilot Model**: GPT-5.3-Codex
+- **Changes Made**: Created `tests/test_main.py` with nine focused pytest test cases covering correct/wrong guesses, invalid input, duplicate guesses, lives boundaries, already-won behavior, normalization, and non-alphabetic secret-word handling.
+- **Context and Reasons for Changes**: User confirmed they wanted the proposed tests implemented. Added executable tests for `update_game_state` and verified there were no analysis errors in both `main.py` and `tests/test_main.py`.
+- **My Observations**:
+
+### **New Interaction**
+- **Date**: 03-12-2026 14:00
+- **User**: cindy.gangne-fotsing@epita.fr
+- **Prompt**: Can you suggest tests for this function?
+- **CoPilot Mode**: Ask
+- **CoPilot Model**: GPT-5.3-Codex
+- **Changes Made**: Proposed a concise, high-value test matrix covering normal flow, invalid input, repeated guesses, boundary conditions, normalization, and non-alphabetic word edge cases.
+- **Context and Reasons for Changes**: User asked for suggested tests before implementation. No files were modified in that interaction; entry was backfilled during reconciliation.
+- **My Observations**:
+
+### **New Interaction**
+- **Date**: 03-12-2026 13:49
+- **User**: cindy.gangne-fotsing@epita.fr
+- **Prompt**: update the journal with the latest interactions
+- **CoPilot Mode**: Edit
+- **CoPilot Model**: Claude Haiku 4.5
+- **Changes Made**: Reconciled recent code-review and documentation interactions against `JOURNAL.md` and prepended four missing Edit/Ask entries from this session before prepending this current journal-update request.
+- **Context and Reasons for Changes**: User requested journal update. Backfilled missing interactions: function review iterations with input validation, normalization, win-state checks, lives clamping; return signature expansion to include feedback messages; and module/function documentation with docstrings.
+- **My Observations**:
+
+### **New Interaction**
+- **Date**: 03-12-2026 13:49
+- **User**: cindy.gangne-fotsing@epita.fr
+- **Prompt**: Can you review and document main.py? Do not be too verbose and skip the trivial
+- **CoPilot Mode**: Edit
+- **CoPilot Model**: Claude Haiku 4.5
+- **Changes Made**: Added module docstring and comprehensive function docstring to `update_game_state()` covering normalization behavior, win-condition logic (alphabetic-only filtering), and state-update guarantees.
+- **Context and Reasons for Changes**: User requested lightweight documentation. Added docstring with focus on non-obvious behavior: that guessed_letters updates only on correct guesses, and that win-detection filters to alphabetic characters only.
+- **My Observations**:
+
+### **New Interaction**
+- **Date**: 03-12-2026 13:49
+- **User**: cindy.gangne-fotsing@epita.fr
+- **Prompt**: i changed it, can you tell me if it is okay ?
+- **CoPilot Mode**: Ask
+- **CoPilot Model**: Claude Haiku 4.5
+- **Changes Made**: Reviewed updated `update_game_state()` function with win-state detection (`required_letters <= set(guessed_letters)`), input validation, and normalization. Confirmed correctness; flagged minor edge case for non-alphabetic-only words.
+- **Context and Reasons for Changes**: Function passed to solid state (no syntax errors, all major bugs fixed); flagged non-alphabetic characters in secret_word as an edge case (minor, acceptable for typical use cases).
+- **My Observations**:
+
+### **New Interaction**
+- **Date**: 03-12-2026 13:49
+- **User**: cindy.gangne-fotsing@epita.fr
+- **Prompt**: I have made some changes, review my code and tell me
+- **CoPilot Mode**: Ask
+- **CoPilot Model**: Claude Haiku 4.5
+- **Changes Made**: Reviewed third version with `required_letters` set comprehension for win detection, `strip()` reintroduced, and `guessed_letters` normalization on every call.
+- **Context and Reasons for Changes**: User added alphabetic-only filtering for win conditions and restored whitespace handling. Identified residual risk: repeated guesses with normalized incoming duplicates (e.g., ["A"] and guess "a"), though not currently breaking.
+- **My Observations**:
+
+### **New Interaction**
+- **Date**: 03-12-2026 13:49
+- **User**: cindy.gangne-fotsing@epita.fr
+- **Prompt**: I have made some changes, review my code and tell me
+- **CoPilot Mode**: Ask
+- **CoPilot Model**: Claude Haiku 4.5
+- **Changes Made**: Reviewed second version with `lives <= 0` early guard, return-signature expansion to `tuple[list[str], int, str]` for feedback messages, and message text on each exit path.
+- **Context and Reasons for Changes**: User added feedback messages and output status strings. Identified remaining issues: mixed-case normalization inconsistency and missing win-state check. No code modified in this turn.
+- **My Observations**:
+
+### **New Interaction**
+- **Date**: 03-12-2026 13:49
+- **User**: cindy.gangne-fotsing@epita.fr
+- **Prompt**: I have made some changes, review my code and tell me
+- **CoPilot Mode**: Ask
+- **CoPilot Model**: Claude Haiku 4.5
+- **Changes Made**: Reviewed first refactored version with early guards, extended return type, and input validation. Flagged medium issues: incomplete normalization of incoming `guessed_letters` and lacking whitespace handling from `guess`/`secret_word`.
+- **Context and Reasons for Changes**: Initial review of improved implementation; provided feedback for next iteration targeting normalization consistency and win-state detection.
+- **My Observations**:
+
+### **New Interaction**
+- **Date**: 03-12-2026 11:46
+- **User**: cindy.gangne-fotsing@epita.fr
+- **Prompt**: I've started implementing a guess the word game (hangman). Can you review my `update_game_state` function?
+- **CoPilot Mode**: Ask
+- **CoPilot Model**: Claude Haiku 4.5
+- **Changes Made**: Initial code review of `update_game_state()` function. Identified high-priority bug (substring matching instead of single-letter validation), medium issues (lives underflow, case/whitespace normalization), and low-priority gap (no game_state tracking for finished rounds).
+- **Context and Reasons for Changes**: User presented first implementation; provided comprehensive review with four categories of findings and suggested test cases. No code was modified in this turn.
+- **My Observations**:
+
+### **New Interaction**
 - **Date**: 03-12-2026 11:46
 - **User**: cindy.gangne-fotsing@epita.fr
 - **Prompt**: Update the journal with the recent interactions
