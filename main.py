@@ -1,4 +1,4 @@
-"""Hangman game logic for processing player guesses and updating game state."""
+import random
 
 
 def update_game_state(
@@ -6,24 +6,6 @@ def update_game_state(
     guessed_letters: list[str],
     guess: str,
     lives: int) -> tuple[list[str], int, str]:
-    """
-    Process a single guess and return updated state.
-
-    Normalizes all inputs to lowercase and strips whitespace.
-    Filters secret_word to only alphabetic characters for win-condition checks.
-    Returns original guessed_letters on invalid input; appends new letter only on correct guess.
-
-    Args:
-        secret_word: Word to guess (case-insensitive, whitespace-tolerant).
-        guessed_letters: List of previously guessed letters (normalized during call).
-        guess: Player's input (stripped and lowercased).
-        lives: Remaining guesses (clamped to 0 minimum).
-
-    Returns:
-        tuple of (updated_guessed_letters, updated_lives, message).
-        guessed_letters is only updated on a correct, new guess.
-        lives decrements only on wrong, new guess.
-    """
 
     if lives <= 0:
         return guessed_letters, 0, "Game over. No more guesses allowed."
@@ -49,3 +31,61 @@ def update_game_state(
     else:
         new_lives = max(lives - 1, 0)
         return guessed_letters, new_lives, "Wrong guess. You lost a life."
+
+
+def get_masked_word(secret_word: str, guessed_letters: list[str]) -> str:
+    return " ".join(
+        letter.upper() if letter in guessed_letters else "_"
+        for letter in secret_word
+    )
+
+
+def is_word_guessed(secret_word: str, guessed_letters: list[str]) -> bool:
+    required_letters = {c for c in secret_word if c.isalpha()}
+    return required_letters <= set(guessed_letters)
+
+
+
+def main():
+
+    word_list = ["apple", "house", "smile", "grape", "chair", "table"]
+
+    secret_word = random.choice(word_list)
+
+    guessed_letters = []
+    wrong_guesses = []
+    lives = 6
+
+    print("Welcome to Hangman!")
+
+    while lives > 0 and not is_word_guessed(secret_word, guessed_letters):
+
+        print("\nWord:", get_masked_word(secret_word, guessed_letters))
+        print("Lives:", lives)
+        print("Wrong guesses:", " ".join(wrong_guesses))
+
+        guess = input("Guess a letter: ")
+
+        new_letters, new_lives, message = update_game_state(
+            secret_word,
+            guessed_letters,
+            guess,
+            lives
+        )
+
+        print(message)
+
+        if new_lives < lives:
+            wrong_guesses.append(guess.strip().lower())
+
+        guessed_letters = new_letters
+        lives = new_lives
+
+    if is_word_guessed(secret_word, guessed_letters):
+        print("\nCongratulations! You guessed the word:", secret_word.upper())
+    else:
+        print("\nYou lost! The word was:", secret_word.upper())
+
+
+if __name__ == "__main__":
+    main()
