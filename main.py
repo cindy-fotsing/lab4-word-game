@@ -39,52 +39,61 @@ def get_masked_word(secret_word: str, guessed_letters: list[str]) -> str:
         for letter in secret_word
     )
 
-
 def is_word_guessed(secret_word: str, guessed_letters: list[str]) -> bool:
     required_letters = {c for c in secret_word if c.isalpha()}
     return required_letters <= set(guessed_letters)
 
 
+def play_turn(secret_word, guessed_letters, wrong_guesses, lives):
+   
+    if is_word_guessed(secret_word, guessed_letters):
+        print("\nWord:", get_masked_word(secret_word, guessed_letters))
+        print(f"Congratulations! You guessed the word: {secret_word.upper()}")
+        return handle_replay()
+
+    if lives <= 0:
+        print(f"\nYou lost! The word was: {secret_word.upper()}")
+        return handle_replay()
+
+    print("\nWord:", get_masked_word(secret_word, guessed_letters))
+    print(f"Lives: {lives}")
+    print("Wrong guesses:", " ".join(wrong_guesses))
+
+    guess = input("Guess a letter: ")
+
+    new_letters, new_lives, message = update_game_state(
+        secret_word,
+        guessed_letters,
+        guess,
+        lives
+    )
+
+    print(message)
+
+    current_guess_clean = guess.strip().lower()
+    new_wrong_guesses = wrong_guesses + [current_guess_clean] if new_lives < lives and current_guess_clean not in wrong_guesses else wrong_guesses
+
+    return play_turn(secret_word, new_letters, new_wrong_guesses, new_lives)
+
+
+def handle_replay():
+    
+    choice = input("\nWould you like to play again? (y/n): ").strip().lower()
+    if choice == 'y':
+        return main()
+    print("Thanks for playing!")
+
 
 def main():
-
     word_list = ["apple", "house", "smile", "grape", "chair", "table", "cindy"]
-
     secret_word = random.choice(word_list)
-
+    
     guessed_letters = []
     wrong_guesses = []
     lives = 6
 
     print("Welcome to Hangman!")
-
-    while lives > 0 and not is_word_guessed(secret_word, guessed_letters):
-
-        print("\nWord:", get_masked_word(secret_word, guessed_letters))
-        print("Lives:", lives)
-        print("Wrong guesses:", " ".join(wrong_guesses))
-
-        guess = input("Guess a letter: ")
-
-        new_letters, new_lives, message = update_game_state(
-            secret_word,
-            guessed_letters,
-            guess,
-            lives
-        )
-
-        print(message)
-
-        if new_lives < lives:
-            wrong_guesses.append(guess.strip().lower())
-
-        guessed_letters = new_letters
-        lives = new_lives
-
-    if is_word_guessed(secret_word, guessed_letters):
-        print("\nCongratulations! You guessed the word:", secret_word.upper())
-    else:
-        print("\nYou lost! The word was:", secret_word.upper())
+    play_turn(secret_word, guessed_letters, wrong_guesses, lives)
 
 
 if __name__ == "__main__":

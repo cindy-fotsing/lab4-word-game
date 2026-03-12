@@ -1,4 +1,14 @@
 ### **New Interaction**
+- **Date**: 03-12-2026 16:55
+- **User**: cindy.gangne-fotsing@epita.fr
+- **Prompt**: Update the journal with the final implementation and cleanup interactions
+- **CoPilot Mode**: Edit
+- **CoPilot Model**: GPT-5.3-Codex
+- **Changes Made**: Reconciled recent entries and prepended this current interaction documenting final implementation/cleanup progress in `main.py`: extracted recursive turn handling into `play_turn`, added replay flow via `handle_replay`, and kept `update_game_state`, `get_masked_word`, and `is_word_guessed` as core helpers.
+- **Context and Reasons for Changes**: User requested another final journal update after additional code cleanup. Reconciliation against the recent top of `JOURNAL.md` found no missing prompts in-scope after the latest final-update entry, so this current interaction was prepended as newest.
+- **My Observations**:
+
+### **New Interaction**
 - **Date**: 03-12-2026 16:35
 - **User**: cindy.gangne-fotsing@epita.fr
 - **Prompt**: Update the journal with the final implementation and cleanup interactions
