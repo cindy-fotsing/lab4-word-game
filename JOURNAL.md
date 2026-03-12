@@ -1,4 +1,14 @@
 ### **New Interaction**
+- **Date**: 03-12-2026 16:35
+- **User**: cindy.gangne-fotsing@epita.fr
+- **Prompt**: Update the journal with the final implementation and cleanup interactions
+- **CoPilot Mode**: Edit
+- **CoPilot Model**: GPT-5.3-Codex
+- **Changes Made**: Reconciled recent interactions and prepended this entry documenting final implementation/cleanup state: `main.py` now includes full game flow (`main()` loop), helper functions (`get_masked_word`, `is_word_guessed`), input-to-state transition handling via `update_game_state`, and minor word-list cleanup/update.
+- **Context and Reasons for Changes**: User requested a final journal update. Reconciliation against the recent top of `JOURNAL.md` found no additional missing prompts after the latest testing/README entries, so only the current interaction was prepended.
+- **My Observations**:
+
+### **New Interaction**
 - **Date**: 03-12-2026 14:38
 - **User**: cindy.gangne-fotsing@epita.fr
 - **Prompt**: Update the journal with the latest testing interactions
@@ -189,4 +199,5 @@
 - **My Observations**:
 
 # This JOURNAL.md file gets automatically updated by the journal-logger agent after every interaction with CoPilot. It serves as a comprehensive log of all prompts, responses, changes made, and reflections during the development process. Each entry is formatted consistently for easy reading and is listed in reverse chronological order, with the most recent interactions at the top.
+
 

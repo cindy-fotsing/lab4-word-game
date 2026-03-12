@@ -48,7 +48,7 @@ def is_word_guessed(secret_word: str, guessed_letters: list[str]) -> bool:
 
 def main():
 
-    word_list = ["apple", "house", "smile", "grape", "chair", "table"]
+    word_list = ["apple", "house", "smile", "grape", "chair", "table", "cindy"]
 
     secret_word = random.choice(word_list)
 
