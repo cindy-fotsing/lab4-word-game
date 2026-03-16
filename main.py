@@ -94,13 +94,6 @@ def main():
     print("Welcome to Hangman!")
     play_turn(secret_word, guessed_letters, wrong_guesses, lives)
 
-def auto_play():
-    letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-    letter = random.choice(letters)
-
-    user = print("Do you want to play the game ?")
-    
-
 
 if __name__ == "__main__":
     main()
